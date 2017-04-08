@@ -24,7 +24,7 @@ hero_img = pygame.transform.scale(hero_img, (64, 64))
 block_img = pygame.image.load("assets/medievalTile_064.png")
 block_img = pygame.transform.scale(block_img, (64, 64))
 
-coin_img = pygame.image.load("assets/goblet.png")
+coin_img = pygame.image.load("assets/horcruxes/diadem.png")
 coin_img = pygame.transform.scale(coin_img, (64, 64))
 
 # Controls
@@ -36,7 +36,7 @@ JUMP = pygame.K_UP
 class Entity(pygame.sprite.Sprite):
 
     def __init__(self, x, y, image):
-        super().__init__()
+        super(Entity, self).__init__()
 
         self.image = pygame.Surface([64, 64], pygame.SRCALPHA, 32)
         self.image.blit(image, [0, 0])
@@ -49,13 +49,13 @@ class Entity(pygame.sprite.Sprite):
 class Block(Entity):
     
     def __init__(self, x, y, image):
-        super().__init__(x, y, image)
+        super(Block, self).__init__(x, y, image)
 
 
 class Character(Entity):
 
     def __init__(self, x, y, image):
-        super().__init__(x, y, image)
+        super(Character, self).__init__(x, y, image)
 
         self.speed = 5
         self.jump_power = 20
@@ -129,7 +129,7 @@ class Character(Entity):
 class Coin(Entity):
     
     def __init__(self, x, y, image):
-        super().__init__(x, y, image)
+        super(Coin, self).__init__(x, y, image)
 
 class Enemy():
     pass
