@@ -18,14 +18,23 @@ font_md = pygame.font.Font(None, 64)
 font_lg = pygame.font.Font(None, 72)
 
 # Images
-hero_img = pygame.image.load("assets/8bit_harry_right.png")
-hero_img = pygame.transform.scale(hero_img, (64, 64))
+hero_img_right = pygame.image.load("assets/harry_adorable.png")
+hero_img_right = pygame.transform.scale(hero_img_right, (64, 64))
+hero_img_left = pygame.image.load("assets/harry_adorable.png")
+hero_img_left = pygame.transform.scale(hero_img_left, (64, 64))
+hero_img_left = pygame.transform.flip(hero_img_left, 1, 0)
+hero_images = [hero_img_right, hero_img_left]
 
 block_img = pygame.image.load("assets/medievalTile_064.png")
 block_img = pygame.transform.scale(block_img, (64, 64))
 
 coin_img = pygame.image.load("assets/horcruxes/diadem.png")
 coin_img = pygame.transform.scale(coin_img, (64, 64))
+
+background_img = pygame.image.load("assets/background.png")
+h = background_img.get_height()
+w = int(background_img.get_width() * HEIGHT / h)
+background_img = pygame.transform.scale(background_img, (w, HEIGHT))
 
 # Controls
 LEFT = pygame.K_LEFT
@@ -54,8 +63,10 @@ class Block(Entity):
 
 class Character(Entity):
 
-    def __init__(self, x, y, image):
-        super(Character, self).__init__(x, y, image)
+    def __init__(self, x, y, images):
+        super(Character, self).__init__(x, y, images[0])
+        
+        self.images = images
 
         self.speed = 10
         self.jump_power = 20
@@ -101,8 +112,7 @@ class Character(Entity):
         hit_list = pygame.sprite.spritecollide(self, coins, True)
         
         for coin in hit_list:
-            self.score += coin.value
-        
+            self.score += coin.value     
     
     def move_left(self):
         self.vx = -1 * self.speed
@@ -123,10 +133,20 @@ class Character(Entity):
 
         self.rect.y -= 1
         
+    def change_image(self):
+        self.image.fill(TRANSPARENT)
+        
+        if self.vx > 0:
+            self.image.blit(self.images[0], [0, 0])
+            
+        else:
+            self.image.blit(self.images[1], [0,0])
+        
     def update(self, level):
         self.apply_gravity(level)
         self.check_world_edges(level)
         self.process_blocks(level.blocks)
+        self.change_image()
         
         self.process_coins(level.coins)
 
@@ -173,11 +193,13 @@ class Game():
     def start(self, level):
         self.level = level
         
+        self.background_layer = pygame.Surface([level.width, level.height], pygame.SRCALPHA, 32)
         self.active_layer = pygame.Surface([level.width, level.height], pygame.SRCALPHA, 32)
         self.inactive_layer = pygame.Surface([level.width, level.height], pygame.SRCALPHA, 32)
 
-
-        self.inactive_layer.fill(SKY_BLUE)
+        for i in range(0, level.width, background_img.get_width()):
+            self.background_layer.blit(background_img, [i, 0])
+            
         self.level.inactive_sprites.draw(self.inactive_layer)
 
 
@@ -219,13 +241,13 @@ class Game():
             #Drawing
 
             offset_x, offset_y = self.calculate_offset()
-
                         
             self.active_layer.fill(TRANSPARENT)
             self.level.active_sprites.draw(self.active_layer)
             
             self.active_layer.blit(self.hero.image, [self.hero.rect.x, self.hero.rect.y])
             
+            self.window.blit(self.background_layer, [offset_x / 2, offset_y])
             self.window.blit(self.inactive_layer, [offset_x, offset_y])
             self.window.blit(self.active_layer, [offset_x, offset_y])
             
@@ -238,7 +260,7 @@ class Game():
 
 def main():
     # Make sprites
-    hero = Character(500, 512, hero_img)
+    hero = Character(500, 512, hero_images)
 
     blocks = pygame.sprite.Group()
      
