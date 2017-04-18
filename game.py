@@ -18,18 +18,29 @@ font_md = pygame.font.Font(None, 64)
 font_lg = pygame.font.Font(None, 72)
 
 # Images
-hero_img_right = pygame.image.load("assets/harry_adorable.png")
+hero_img_right = pygame.image.load("assets/harry_adorable_right.png")
 hero_img_right = pygame.transform.scale(hero_img_right, (64, 64))
-hero_img_left = pygame.image.load("assets/harry_adorable.png")
+hero_img_left = pygame.image.load("assets/harry_adorable_left.png")
 hero_img_left = pygame.transform.scale(hero_img_left, (64, 64))
-hero_img_left = pygame.transform.flip(hero_img_left, 1, 0)
 hero_images = [hero_img_right, hero_img_left]
 
 block_img = pygame.image.load("assets/medievalTile_064.png")
 block_img = pygame.transform.scale(block_img, (64, 64))
 
-coin_img = pygame.image.load("assets/horcruxes/diadem.png")
-coin_img = pygame.transform.scale(coin_img, (64, 64))
+diadem_img = pygame.image.load("assets/horcruxes/diadem.png")
+diadem_img = pygame.transform.scale(diadem_img, (32, 32))
+diary_img = pygame.image.load("assets/horcruxes/diary.png")
+diary_img = pygame.transform.scale(diary_img, (32, 32))
+goblet_img = pygame.image.load("assets/horcruxes/goblet.png")
+goblet_img = pygame.transform.scale(goblet_img, (32, 32))
+harry_img = pygame.image.load("assets/horcruxes/harry.png")
+harry_img = pygame.transform.scale(harry_img, (32, 32))
+locket_img = pygame.image.load("assets/horcruxes/locket.png")
+locket_img = pygame.transform.scale(locket_img, (32, 32))
+nagini_img = pygame.image.load("assets/horcruxes/nagini.png")
+nagini_img = pygame.transform.scale(nagini_img, (32, 32))
+ring_img = pygame.image.load("assets/horcruxes/ring.png")
+ring_img = pygame.transform.scale(ring_img, (32, 32))
 
 background_img = pygame.image.load("assets/background.png")
 h = background_img.get_height()
@@ -108,17 +119,19 @@ class Character(Entity):
                 self.rect.top = block.rect.bottom
                 self.vy = 0
 
-    def process_coins(self, coins):
-        hit_list = pygame.sprite.spritecollide(self, coins, True)
+    def process_horcruxes(self, horcruxes):
+        hit_list = pygame.sprite.spritecollide(self, horcruxes, True)
         
-        for coin in hit_list:
-            self.score += coin.value     
+        for horcrux in hit_list:
+            self.score += horcrux.value     
     
     def move_left(self):
         self.vx = -1 * self.speed
+        self.image.blit(self.images[1], [0, 0])
         
     def move_right(self):
         self.vx = self.speed
+        self.image.blit(self.images[0], [0, 0])
         
     def stop(self):
         self.vx = 0
@@ -133,29 +146,20 @@ class Character(Entity):
 
         self.rect.y -= 1
         
-    def change_image(self):
-        self.image.fill(TRANSPARENT)
-        
-        if self.vx > 0:
-            self.image.blit(self.images[0], [0, 0])
-            
-        else:
-            self.image.blit(self.images[1], [0,0])
         
     def update(self, level):
         self.apply_gravity(level)
         self.check_world_edges(level)
         self.process_blocks(level.blocks)
-        self.change_image()
         
-        self.process_coins(level.coins)
+        self.process_horcruxes(level.horcruxes)
 
 
 
-class Coin(Entity):
+class Horcrux(Entity):
     
     def __init__(self, x, y, image):
-        super(Coin, self).__init__(x, y, image)
+        super(Horcrux, self).__init__(x, y, image)
         
         self.value = 1
 
@@ -163,12 +167,12 @@ class Enemy():
     pass
 
 class Level():
-    def __init__(self, blocks, coins):
+    def __init__(self, blocks, horcruxes):
         self.blocks = blocks
-        self.coins = coins
+        self.horcruxes = horcruxes
         
         self.active_sprites = pygame.sprite.Group()
-        self.active_sprites.add(self.coins)
+        self.active_sprites.add(self.horcruxes)
         
         self.inactive_sprites = pygame.sprite.Group()
         self.inactive_sprites.add(blocks)
@@ -275,12 +279,12 @@ def main():
     blocks.add(Block(448, 320, block_img))
     blocks.add(Block(512, 320, block_img))
 
-    coins = pygame.sprite.Group()
-    coins.add(Coin(768, 384, coin_img))
-    coins.add(Coin(256, 320, coin_img))
+    horcruxes = pygame.sprite.Group()
+    horcruxes.add(Horcrux(768, 416, diadem_img))
+    horcruxes.add(Horcrux(256, 352, ring_img))
 
     # Make a level
-    level = Level(blocks, coins)
+    level = Level(blocks, horcruxes)
 
     # Start game
     game = Game(hero)
