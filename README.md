@@ -1,11 +1,11 @@
 ## Help Harry!
 
-Help Harry is a fun platformer game that runs using [Python](https://www.python.org/). In the game, the player travels through 7 levels, collecting a horcrux in each, helping Harry Potter to defeat his rival, Lord Voldemort.
+Help Harry! is a fun platformer game that runs using [Python](https://www.python.org/). In the game, the player's goal is to collect 7 horcruxes, one from each level, in order to help Harry Potter defeat Lord Voldemort.
 
 ### How do I Play?
 
-Gameplay is very simple. The only equipment required is a Xbox 360 controller, which can be easily purchased on [Amazon](https://www.amazon.com/Microsoft-Wired-Controller-Windows-Console/dp/B004QRKWLA), at the [Xbox website](http://www.xbox.com/en-US/xbox-one/accessories/controllers/controller-cable-windows), or a multitude of other places. The actual controls are very simple as well. Use the start button to start the game and move on to the lext level, the left joystick to move and the A button to jump.
-
+Gameplay is simple. The only equipment required is a Xbox 360 controller, which can be easily purchased on [Amazon](https://www.amazon.com/Microsoft-Wired-Controller-Windows-Console/dp/B004QRKWLA), at the [Xbox website](http://www.xbox.com/en-US/xbox-one/accessories/controllers/controller-cable-windows), or a multitude of other places. Once you have your controller, use the start button to start the game and move on to the lext level, the left joystick to move and the A button to jump.
+![conrols_diagram](assets/xbox_controller.png)
 ```markdown
 Syntax highlighted code block
 
