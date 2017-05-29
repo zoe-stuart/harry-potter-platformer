@@ -25,6 +25,6 @@ You'll encounter various objects and enemies throughout the game. It's important
 1. **A Pixie** is an enemy- if you run into it, you will lose a heart. You can kill it and earn 10 points by jumping on its head **twice**. ![pixie](assets/pixie_tb.png)
 2. **A Dementor** is also an enemy, and will have the same negative effect, but it's a little weaker. Jump on its head just once to kill it and earn 5 points. ![dementor](assets/dementor_tb.png)
 3. **Horcruxes** are located throughout each level, and are your goal. Collect them and exit the door at the end to move on to the next level. They come in many different forms, so keep an eye out for any of them.
-![horcrux1](assets/horcruxes/diadem_tb.png) ![horcruxes](assets/horcruxes/diary_tb.png) ![horcruxes](assets/horcruxes/goblet_tb.png) ![horcruxes](assets/horcruxes/harry_tb.png) ![horcruxes](assets/horcruxes/locket_tb.png) ![horcruxes](assets/horcruxes/nagini_tb.png) ![horcruxes](assets/horcruxes/ring_tb.png)
+![horcrux1](assets/horcruxes/diadem_tb.png) ![horcrux2](assets/horcruxes/diary_tb.png) ![horcrux3](assets/horcruxes/goblet_tb.png) ![horcrux4](assets/horcruxes/harry_tb.png) ![horcrux5](assets/horcruxes/locket_tb.png) ![horcrux6](assets/horcruxes/nagini_tb.png) ![horcrux7](assets/horcruxes/ring_tb.png)
 
 4. **Hedwig** is there to help you. She'll either be carrying a medi-kit, like the one shown, or a small heart. Jump up to collect it from her and you'll get a health boost of either a life or a heart. ![hedwig](assets/hedwig_down_tb.png)
