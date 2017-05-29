@@ -1,12 +1,10 @@
-## Welcome to GitHub Pages
+## Help Harry!
 
-You can use the [editor on GitHub](https://github.com/zoe-stuart/harry-potter-platformer/edit/master/README.md) to maintain and preview the content for your website in Markdown files.
+Help Harry is a fun platformer game that runs using [Python](https://www.python.org/). In the game, the player travels through 7 levels, collecting a horcrux in each, helping Harry Potter to defeat his rival, Lord Voldemort.
 
-Whenever you commit to this repository, GitHub Pages will run [Jekyll](https://jekyllrb.com/) to rebuild the pages in your site, from the content in your Markdown files.
+### How do I Play?
 
-### Markdown
-
-Markdown is a lightweight and easy-to-use syntax for styling your writing. It includes conventions for
+Gameplay is very simple. The only equipment required is a Xbox 360 controller, which can be easily purchased on [Amazon](https://www.amazon.com/Microsoft-Wired-Controller-Windows-Console/dp/B004QRKWLA), at the [Xbox website](http://www.xbox.com/en-US/xbox-one/accessories/controllers/controller-cable-windows), or a multitude of other places. The actual controls are very simple as well. Use the start button to start the game and move on to the lext level, the left joystick to move and the A button to jump.
 
 ```markdown
 Syntax highlighted code block
