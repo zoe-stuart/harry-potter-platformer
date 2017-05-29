@@ -16,32 +16,15 @@ Now you can start playing!
 
 ### How do I Play?
 
-Gameplay is simple. Once you have plugged in your controller and run the game, use the start button to start the playing and move on to the lext level, the left joystick to move and the A button to jump.
-![conrols_diagram](assets/xbox_controller.png)
-```markdown
-Syntax highlighted code block
+Gameplay is simple. Once you have plugged in your controller and run the game, use the start button to start playing and move on to the lext level, the left joystick to move and the A button to jump.
 
-# Header 1
-## Header 2
-### Header 3
+![controls_diagram](assets/xbox_controller.png)
 
-- Bulleted
-- List
+You'll encounter various objects and enemies throughout the game. It's important that you know what they do. 
 
-1. Numbered
-2. List
+1. **A Pixie** is an enemy- if you run into it, you will lose a heart. You can kill it and earn 10 points by jumping on its head **twice**. ![pixie](assets/Pixie.png)
+2. **A Dementor** is also an enemy, and will have the same negative effect, but it's a little weaker. Jump on its head just once to kill it and earn 5 points. ![dementor](assets/dementor.png)
+3. **Horcruxes** are located throughout each level, and are your goal. Collect them and exit the door at the end to move on to the next level. They come in many different forms, so keep an eye out for any of them.
+![horcrux1](assets/horcruxes/diadem.png) ![horcruxes](assets/horcruxes/diary.png) ![horcruxes](assets/horcruxes/goblet.png) ![horcruxes](assets/horcruxes/harry.png) ![horcruxes](assets/horcruxes/locket.png) ![horcruxes](assets/horcruxes/nagini.png) ![horcruxes](assets/horcruxes/ring.png)
 
-**Bold** and _Italic_ and `Code` text
-
-[Link](url) and ![Image](src)
-```
-
-For more details see [GitHub Flavored Markdown](https://guides.github.com/features/mastering-markdown/).
-
-### Jekyll Themes
-
-Your Pages site will use the layout and styles from the Jekyll theme you have selected in your [repository settings](https://github.com/zoe-stuart/harry-potter-platformer/settings). The name of this theme is saved in the Jekyll `_config.yml` configuration file.
-
-### Support or Contact
-
-Having trouble with Pages? Check out our [documentation](https://help.github.com/categories/github-pages-basics/) or [contact support](https://github.com/contact) and we’ll help you sort it out.
+4. **Hedwig** is there to help you. She'll either be carrying a medi-kit, like the one shown, or a small heart. Jump up to collect it from her and you'll get a health boost of either a life or a heart. ![hedwig](assets/hedwig_down.png)
