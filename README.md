@@ -38,4 +38,4 @@ You'll encounter various objects and enemies throughout the game. It's important
 
 - **Hedwig** is there to help you. She'll either be carrying a medi-kit, like the one shown, or a small heart. Jump up to collect it from her and you'll get a health boost of either a life or a heart. 
 
-![hedwig](assets/hedwig_down_tb.png)
+![hedwig](assets/hedwig_tb.png)
