@@ -2,11 +2,13 @@
 
 Help Harry! is a fun platformer game that runs using [Python](https://www.python.org/). In the game, the player's goal is to collect 7 horcruxes, one from each level, in order to help Harry Potter defeat Lord Voldemort.
 
+![screenshot 1](assets/screenshot_1.jpg)
+
 ### How do I Get the Game?
 
 Help Harry! Is free to download, you just need to make sure you have the required software to run the game. 
 
-You'll need Python 2 **?????**, which you can download [here](https://www.python.org/downloads/windows/) for Windows (you'll have to scroll down a bit). The game also requires pygame, which can be downloaded on [pygame's website](https://www.pygame.org/).
+You'll need Python 3, which you can download [here](https://www.python.org/downloads/windows/) for Windows. The game also requires pygame, which can be downloaded on [pygame's website](https://www.pygame.org/).
 
 [This](https://github.com/zoe-stuart/harry-potter-platformer/archive/master.zip) is a direct link to download a zip archive of the code, or you can visit my GitHub repository [here](https://github.com/zoe-stuart/harry-potter-platformer).
 
