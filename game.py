@@ -26,7 +26,8 @@ JUMP = pygame.K_UP
 # Levels
 levels = ["levels/world-1.json",
           "levels/world-2.json",
-          "levels/world-3.json"]
+          "levels/world-3.json",
+          "levels/world-4.json"]
 
 # Colors
 TRANSPARENT = (0, 0, 0, 0)
@@ -75,10 +76,10 @@ block_images = {"SB": load_image("assets/stone_block.png"),
                 "WB": load_image("assets/wood_block.png"),
                 "EL": load_image("assets/stone_block.png")}
 
-torch_images = {"T1": load_image("assets/torch_1.png"),
-                "T2": load_image("assets/torch_2.png"),
-                "T3": load_image("assets/torch_3.png"),
-                "T4": load_image("assets/torch_4.png")}
+torch_images = {"1": load_image("assets/torch_1.png"),
+                "2": load_image("assets/torch_2.png"),
+                "3": load_image("assets/torch_3.png"),
+                "4": load_image("assets/torch_4.png")}
 
 
 horcrux_images = {"diadem": load_image("assets/horcruxes/diadem.png"),
@@ -144,20 +145,27 @@ class Block(Entity):
 class Torch(Entity):
 
     def __init__(self, x, y, images):
-        super().__init__(x, y, images['T1'])
+        super().__init__(x, y, images['1'])
 
         self.images = images
-        
         self.steps = 0
         
     def set_image(self):
         self.steps = (self.steps + 1) % 4# Works well with 2 images, try lower number if more frames are in animation
 
-        self.image = images[steps]
+        if self.steps == 0:
+            label = '1'
+        elif self.steps == 1:
+            label = '2'
+        elif self.steps == 2:
+            label = '3'
+        elif self.steps == 3:
+            label = '4'
+
+        self.img = torch_images[label]
 
     def update(self):
         self.set_image()
-        print(self.image_index)
 
 class Character(Entity):
 
@@ -272,6 +280,7 @@ class Character(Entity):
                 
                 play_sound(HURT_SOUND)
                 self.hearts -= 1
+                self.score -= 1
                 self.invincibility = int(0.75 * FPS)
 
     def process_powerups(self, powerups):
@@ -573,9 +582,9 @@ class Level():
             x, y = item[0] * GRID_SIZE, item[1] * GRID_SIZE
             self.starting_powerups.append(Heart(x, y, powerup_heart_img))
             
-        for item in map_data['hearts']:
+        for item in map_data['torches']:
             x, y = item[0] * GRID_SIZE, item[1] * GRID_SIZE
-            self.starting_powerups.append(Heart(x, y, powerup_heart_img))
+            self.starting_torches.append(Torch(x, y, torch_images))
 
         for i, item in enumerate(map_data['flag']):
             x, y = item[0] * GRID_SIZE, item[1] * GRID_SIZE
@@ -641,6 +650,7 @@ class Level():
         self.completed = False
 
         self.blocks.add(self.starting_blocks)
+        self.torches.add(self.starting_torches)
         self.enemies.add(self.starting_enemies)
         self.horcruxes.add(self.starting_horcruxes)
         self.powerups.add(self.starting_powerups)
@@ -655,6 +665,7 @@ class Level():
         self.enemies.add(self.starting_enemies)
         self.horcruxes.add(self.starting_horcruxes)
         self.powerups.add(self.starting_powerups)
+        self.torches.add(self.starting_torches)
 
         self.active_sprites.add(self.horcruxes, self.enemies, self.powerups)
 
@@ -813,6 +824,7 @@ class Game():
         if self.stage == Game.PLAYING:
             self.hero.update(self.level)
             self.level.enemies.update(self.level, self.hero)
+            self.level.torches.update()
 
         if self.level.completed:
             if self.current_level < len(levels) - 1:
@@ -845,6 +857,7 @@ class Game():
 
         self.level.active_layer.fill(TRANSPARENT)
         self.level.active_sprites.draw(self.level.active_layer)
+        self.level.torches.draw(self.level.scenery_layer)
 
         if self.hero.invincibility % 3 < 2:
             self.level.active_layer.blit(self.hero.image, [self.hero.rect.x, self.hero.rect.y])
