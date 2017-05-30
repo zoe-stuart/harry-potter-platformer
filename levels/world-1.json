@@ -7,7 +7,7 @@
 	"background-position": "top",
 	"background-repeat-x": 1,
 	"background-fill-y": 1,
-	"scenery-img": "assets/torch.png",
+	"scenery-img": "",
 	"scenery-position": "bottom",
 	"scenery-repeat-x": 1,
 	"scenery-fill-y": 1,
@@ -65,6 +65,6 @@
 	              [41, 8, "diadem"], [47, 0, "diadem"], [50, 8, "diadem"], [52, 8, "diadem"], [58, 5, "diadem"], [61, 8, "diadem"]],
 	"oneups": [[46, 4]],
 	"hearts": [[6, 3], [24, 3], [39, 3], [55, 1]],
-	"flag": [[69, 0], [69, 1], [69, 2]],
-	"torches": [[0, 0]]
+	"flag": [[69, 2]],
+	"torches": [[5, 4], [15, 4], [25, 4], [35, 4], [45, 4], [55, 4], [65, 4]]
 }
