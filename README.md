@@ -2,7 +2,7 @@
 
 Help Harry! is a fun platformer game that runs using [Python](https://www.python.org/). In the game, the player's goal is to collect 7 horcruxes, one from each level, in order to help Harry Potter defeat Lord Voldemort.
 
-![screenshot 1](assets/scrrenshot_1.png)
+![screenshot 1](assets/screenshot_1.png)
 
 ### How do I Get the Game?
 
